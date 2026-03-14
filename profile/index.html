@@ -26,6 +26,11 @@
             overflow: visible;
             margin: 0;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
+            width: 100vw;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
         }
 
         #topBanner > div:first-of-type {
@@ -254,9 +259,9 @@
         }
 
         .dashboard-content.container {
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
+            max-width: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
             width: 100%;
         }
 
@@ -318,11 +323,12 @@
         .content-card {
             background: white;
             border-radius: 0;
-            padding: 24px;
+            padding: 24px 32px;
             margin: 0;
             box-shadow: none;
             border-bottom: 1px solid #e2e8f0;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .content-card h2 {
@@ -363,7 +369,7 @@
 
         .content-wrapper {
             width: 100%;
-            margin: 0 auto;
+            margin: 0;
             padding: 0;
             max-width: 100%;
         }
