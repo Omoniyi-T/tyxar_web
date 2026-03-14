@@ -29,7 +29,7 @@
                     <p>This works for both single lines and more. All text or characters within
                         <code>#...#</code> would be ignored.
                     </p>
-                    <h3>Examples:</h3>
+                    <h4>Examples:</h4>
                     <pre><code>
 # This is a comment #
 
@@ -40,41 +40,61 @@ code calls the x function#
             
                 <section id="variables">
                     <h2>Variables</h2>
-                    <p>Variables are used to store data values. They are declared using the umbrella term
-                        <code>VARIABLES:</code> <code>Variables:</code> or
-                        <code>VAR:</code> followed by variable declarations.
+                    <p>Variables are used to store data values. They are declared under the variables <i><a href="tyxar_web/docs/terminologies#umbrella">umbrella</a></i>: <br>
+                        <code>VARIABLES:</code> or <br>
+                        <code>Variables:</code> or <br>
+                        <code>VAR:</code><br>
+                        followed by indented variable declarations.
                     </p>
                     <p>This provides the relief from scanning through out a file for any declared variables,
                         as all the variables to be used -
-                        regardless whether it is empty or not- are declared at the start of a program.
+                        regardless whether it is empty or not - are declared at the start of a program. Any changes to the variables would be made in the program body.
                     </p>
             
                     <h3>Variable Declaration</h3>
-                    <p>Variables declarations in Tyxar are slightly different to many other languages as variable names
-                        generally tend to be nouns. For this reason, variable names must always have the KEYWORD: <code>The</code>
-                        or <code>the</code> just before the variable names.
+                    <p>Variables declarations in Tyxar are slightly different to many other languages. As variable names
+                        generally tend to be nouns, variables must always have the <i><a href="tyxar_web/docs/terminologies#keyword">keyword</a></i>: <br>
+                        <code>The</code> or <br>
+                        <code>the</code> <br> 
+                        just before the variable names. Variables are all declared in an indentation level from the 
+                        variables <i><a href="tyxar_web/docs/terminologies#umbrella">umbrella</a></i>.
                     </p>
+                    <h4>Examples:</h4>
                     <pre><code>VAR:
-The num is 3
-the name is "John"
+    The age is 3
+    the name is "John"
                         </code></pre>
             
                     <h3>Variable Naming</h3>
                     <ul>
-                        <li>Variable names can contain letters, numbers, and underscores</li>
+                        <li>Variable names can contain letters, numbers, and underscores between multi-worded variables</li>
                         <li>Variable names are case-sensitive</li>
                         <li>Use descriptive names that explain the purpose of the variable</li>
-                        <li>Tyxar supports natural language-style variable names</li>
                     </ul>
             
-                    <h3>Variable Types</h3>
-                    <p>Tyxar supports several data types:</p>
+                    <h3>Variable States</h3>
+                    <p>Tyxar currently supports several data states:</p>
                     <ul>
-                        <li><strong>Numbers:</strong> Integers and floating-point numbers</li>
-                        <li><strong>Strings:</strong> Text enclosed in double quotes</li>
-                        <li><strong>Booleans:</strong> true or false values</li>
-                        <li><strong>Collections:</strong> Arrays and objects</li>
+                        <li><strong>Number:</strong> Integers and floating-point numbers. </li>
+                        <li><strong>Phrase:</strong> Any data enclosed in quotes. </li>
+                        <li><strong>Digit:</strong> Integers only. </li>
+                        <li><strong>Decimal:</strong> Floating-point numbers only. </li>
+                        <li><strong>Letter:</strong> Single alphabetic characters only. </li>
+                        <li><strong>Symbol:</strong> Non-alphanumeric characters only. </li>
+                        <li><strong>Constant:</strong> Any data, but never changes. </li>
                     </ul>
+                    <p>To apply data states to variables, the
+                     <i><a href="tyxar_web/docs/terminologies#key-phrase">key-phrase</a></i>
+                      <code>as a</code></p>
+                    <h4>Examples:</h4>
+                    <pre><code>variables:
+    the age is 3 as a number
+    The name is "Bob" as a phrase
+    the code is 2026 as a digit
+    The result is 3.14 as a decimal
+    the 1st_letter is "j" as a letter
+    The currency is "£" as a symbol
+    the code is "alive!" as a constant</code></pre>
                 </section>
 
                 <section id="input-output">
@@ -140,11 +160,9 @@ the message is "Hello, World!"
                         the name is "john"
                         the upperName is to adjust the name to CAPS  # Uppercase conversion</code></pre>
                 </section>
-            </div>
+         
             
             
-            
-            <div class="content-wrapper">
                 <h1>Control Flow</h1>
             
                 <section id="conditionals">
@@ -186,7 +204,7 @@ the message is "Hello, World!"
                                 write "Grade: F"
                             END IF</code></pre>
                 </section>   
-            </div>
+         
             
         
 

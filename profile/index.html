@@ -22,9 +22,9 @@
             position: relative;
             height: 220px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            border-radius: 16px;
+            border-radius: 0;
             overflow: visible;
-            margin: -16px -16px 0 -16px;
+            margin: 0;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
         }
 
@@ -45,6 +45,7 @@
             align-items: flex-end;
             gap: 24px;
             z-index: 2;
+            width: 100%;
         }
 
         
@@ -81,12 +82,14 @@
             background: rgba(255,255,255,0.2);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 6px;
+            border-radius: 0;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.2s ease;
             white-space: nowrap;
+            flex: 1;
+            min-width: 0;
         }
 
         .banner-nav-btn:hover {
@@ -115,13 +118,14 @@
             #topBanner {
                 height: auto;
                 min-height: auto;
-                padding: 14px;
-                margin: -16px -16px 0 -16px;
+                padding: 0;
+                margin: 0;
+                border-radius: 0;
             }
 
             #topBanner > div:nth-child(2) {
                 position: static;
-                padding: 0;
+                padding: 16px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
@@ -135,15 +139,14 @@
                 align-items: flex-start;
                 gap: 12px;
                 flex: none;
+                width: 100%;
             }
-
-            /* Avatar suppressed on small screens by targeting the element directly. */
-            
 
             #topBanner .banner-text h1 {
                 font-size: 1.1rem;
                 line-height: 1.2;
                 margin: 0;
+                flex: 1;
             }
 
             #topBanner .banner-text > div:last-child {
@@ -155,14 +158,20 @@
             #topBanner .banner-nav {
                 width: 100%;
                 flex-direction: row;
-                gap: 8px;
+                gap: 0;
                 margin-top: 0;
             }
 
             .banner-nav-btn {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+                padding: 8px 12px;
+                font-size: 0.75rem;
                 flex: 1;
+                border-radius: 0;
+            }
+
+            .content-card {
+                padding: 16px;
+                border-radius: 0;
             }
         }
 
@@ -171,15 +180,16 @@
             #topBanner {
                 height: auto;
                 min-height: auto;
-                padding: 12px;
-                margin: -16px -16px 0 -16px;
+                padding: 0;
+                margin: 0;
+                border-radius: 0;
             }
 
             #topBanner > div:nth-child(2) {
                 gap: 0;
+                padding: 12px;
             }
 
-           
             #topBanner .banner-text h1 {
                 font-size: 0.95rem;
                 line-height: 1.2;
@@ -192,18 +202,49 @@
             }
 
             #topBanner .banner-nav {
-                gap: 6px;
+                gap: 0;
+                width: 100%;
             }
 
             .banner-nav-btn {
-                padding: 5px 10px;
+                padding: 8px 0;
                 font-size: 0.7rem;
+                border-radius: 0;
+                border-right: 1px solid rgba(255,255,255,0.3);
+            }
+
+            .banner-nav-btn:last-child {
+                border-right: none;
+            }
+
+            .content-card {
+                padding: 12px;
+                border-radius: 0;
             }
         }
 
         /* Dashboard Layout Styles */
         .dashboard-wrapper {
             display: none;
+            width: 100%;
+        }
+
+        .dashboard-main {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .dashboard-content {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         .hamburger-btn {
@@ -248,14 +289,17 @@
         .dashboard-main-content {
             width: 100%;
             min-width: 0;
+            padding: 0;
+            margin: 0;
         }
 
         .content-card {
             background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 0;
+            padding: 24px;
+            margin-bottom: 0;
+            box-shadow: none;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .content-card h2 {
@@ -264,10 +308,14 @@
             color: #2d3748;
         }
 
+        .content-card:last-child {
+            border-bottom: none;
+        }
+
         .placeholder-content {
             background: linear-gradient(135deg, #f7fafc 0%, #e2e8f0 100%);
             border: 2px dashed #cbd5e0;
-            border-radius: 8px;
+            border-radius: 0;
             padding: 32px;
             text-align: center;
             color: #718096;
@@ -277,26 +325,49 @@
             justify-content: center;
         }
 
+        /* Profile Events Container */
+        .profile-events {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         @media (max-width: 1024px) {
             .dashboard-wrapper {
-                gap: 16px;
+                gap: 0;
             }
 
-
             .content-card {
-                padding: 12px;
+                padding: 20px;
+                border-radius: 0;
             }
         }
 
         @media (max-width: 768px) {
             .dashboard-wrapper {
                 flex-direction: column;
-                gap: 12px;
-                margin-top: 12px;
+                gap: 0;
+                margin-top: 0;
             }
 
             .hamburger-btn {
                 display: none;
+            }
+
+            #topBanner {
+                border-radius: 0;
             }
         }
     </style>
@@ -396,12 +467,12 @@
                                         <h2>Welcome Back!</h2>
 
                                         <!-- Admin Section -->
-                                        <div id="overview-admin" class="hidden" style="margin-bottom: 24px;">
-                                            <div style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 16px;">
+                                        <div id="overview-admin" class="hidden" style="margin-bottom: 0;">
+                                            <div style="background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%); border-radius: 0; padding: 24px; color: white; margin-bottom: 0;">
                                                 <h3 style="margin: 0 0 12px 0; font-size: 1.5rem;">👑 Admin Dashboard</h3>
                                                 <p style="margin: 0; opacity: 0.9;">Manage users, approve role requests, and oversee the platform.</p>
                                             </div>
-                                            <div id="adminUserTable" style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow-x: auto;">
+                                            <div id="adminUserTable" style="background: white; border-radius: 0; padding: 24px; box-shadow: none; overflow-x: auto; border-bottom: 1px solid #e2e8f0;">
                                                 <h4 style="margin-top: 0; color: #2d3748;">Users & Role Management</h4>
                                                 <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
                                                     <thead>
@@ -425,7 +496,7 @@
                                             </div>
 
                                             <!-- Pending Role Requests -->
-                                            <div id="adminPendingRequests" style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-top: 24px;">
+                                            <div id="adminPendingRequests" style="background: white; border-radius: 0; padding: 24px; box-shadow: none; margin-top: 0; border-bottom: 1px solid #e2e8f0;">
                                                 <h4 style="margin-top: 0; color: #2d3748; margin-bottom: 16px;">⏳ Pending Role Requests</h4>
                                                 <div id="adminPendingRequestsBody" style="display: flex; flex-direction: column; gap: 12px;">
                                                     <!-- Loading skeleton -->
@@ -437,12 +508,12 @@
                                         </div>
 
                                         <!-- Developer Section -->
-                                        <div id="overview-developer" class="hidden" style="margin-bottom: 24px;">
-                                            <div style="background: linear-gradient(135deg, #38a169 0%, #2f855a 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 16px;">
+                                        <div id="overview-developer" class="hidden" style="margin-bottom: 0;">
+                                            <div style="background: linear-gradient(135deg, #38a169 0%, #2f855a 100%); border-radius: 0; padding: 24px; color: white; margin-bottom: 0;">
                                                 <h3 style="margin: 0 0 12px 0; font-size: 1.5rem;">💻 Developer Dashboard</h3>
                                                 <p style="margin: 0; opacity: 0.9;">Access development tools, libraries, and code repositories you have permission to modify.</p>
                                             </div>
-                                            <div style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                            <div style="background: white; border-radius: 0; padding: 24px; box-shadow: none; border-bottom: 1px solid #e2e8f0;">
                                                 <h4 style="margin-top: 0; color: #2d3748; margin-bottom: 16px;">📚 Allowed Repositories</h4>
                                                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
                                                     <div style="border: 2px solid #cbd5e0; border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.2s ease;" onmouseover="this.style.borderColor='#38a169'; this.style.background='#f0fdf4'" onmouseout="this.style.borderColor='#cbd5e0'; this.style.background='white'">
@@ -460,12 +531,12 @@
                                         </div>
 
                                         <!-- Tester Section -->
-                                        <div id="overview-tester" class="hidden" style="margin-bottom: 24px;">
-                                            <div style="background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 16px;">
+                                        <div id="overview-tester" class="hidden" style="margin-bottom: 0;">
+                                            <div style="background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%); border-radius: 0; padding: 24px; color: white; margin-bottom: 0;">
                                                 <h3 style="margin: 0 0 12px 0; font-size: 1.5rem;">🧪 Tester Dashboard</h3>
-                                                <p style="margin: 0; opacity: 0.9;">Access pre-release builds, test new features, and provide feedback.</p>
+                                                <p style="margin: 0; opacity: 0.9;">Test features and report issues for Tyxar.</p>
                                             </div>
-                                            <div style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                            <div style="background: white; border-radius: 0; padding: 24px; box-shadow: none; border-bottom: 1px solid #e2e8f0;">
                                                 <h4 style="margin-top: 0; color: #2d3748; margin-bottom: 16px;">📦 Available Pre-Release Builds</h4>
                                                 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
                                                     <div style="border: 2px solid #4299e1; border-radius: 8px; padding: 16px; background: #f0f9ff;">
@@ -483,25 +554,25 @@
                                         </div>
 
                                         <!-- User Section (shown only when no other roles) -->
-                                        <div id="overview-user" class="hidden" style="margin-bottom: 24px;">
-                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; padding: 24px; color: white; margin-bottom: 16px;">
+                                        <div id="overview-user" class="hidden" style="margin-bottom: 0; border-bottom: 1px solid #e2e8f0;">
+                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0; padding: 24px; color: white; margin-bottom: 0;">
                                                 <h3 style="margin: 0 0 12px 0; font-size: 1.5rem;">👤 User Dashboard</h3>
                                                 <p style="margin: 0; opacity: 0.9;">Welcome to Tyxar! Explore the language, learn best practices, and engage with the community.</p>
                                             </div>
-                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-                                                <div style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; background: white; padding: 0; box-shadow: none;">
+                                                <div style="background: white; border-radius: 0; padding: 24px; box-shadow: none; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
                                                     <div style="font-size: 1.5rem; margin-bottom: 12px;">📚</div>
                                                     <h4 style="margin: 0 0 8px 0; color: #2d3748;">Learn the Basics</h4>
                                                     <p style="font-size: 0.9rem; color: #718096; margin: 0; margin-bottom: 12px;">Get started with Tyxar through our beginner-friendly guides.</p>
                                                     <a href="/tyxar_web/docs/get-started/" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Start Learning →</a>
                                                 </div>
-                                                <div style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                                <div style="background: white; border-radius: 0; padding: 24px; box-shadow: none; border-right: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
                                                     <div style="font-size: 1.5rem; margin-bottom: 12px;">💬</div>
                                                     <h4 style="margin: 0 0 8px 0; color: #2d3748;">Join the Community</h4>
                                                     <p style="font-size: 0.9rem; color: #718096; margin: 0; margin-bottom: 12px;">Discuss with other Tyxar developers and get help.</p>
                                                     <a href="#" onclick="alert('Community forum/Discord would go here'); return false;" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.9rem; cursor: pointer;">Join Discussion →</a>
                                                 </div>
-                                                <div style="background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                                <div style="background: white; border-radius: 0; padding: 24px; box-shadow: none; border-bottom: 1px solid #e2e8f0;">
                                                     <div style="font-size: 1.5rem; margin-bottom: 12px;">🔗</div>
                                                     <h4 style="margin: 0 0 8px 0; color: #2d3748;">View Projects</h4>
                                                     <p style="font-size: 0.9rem; color: #718096; margin: 0; margin-bottom: 12px;">Explore projects built with Tyxar.</p>
@@ -604,7 +675,7 @@
                                         <div style="background: linear-gradient(135deg, #fc8181 0%, #f56565 100%); border-radius: 12px; padding: 24px; color: white;">
                                             <h3 style="margin-top: 0; margin-bottom: 12px;">Sign Out</h3>
                                             <p style="margin: 0 0 16px 0; opacity: 0.9;">Click below to sign out of your account.</p>
-                                            <button onclick="logout()" style="padding: 12px 24px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">Sign Out</button>
+                                            <button onclick="logout()" style="padding: 12px 24px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 0; cursor: pointer; font-weight: 600; font-size: 1rem; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">Sign Out</button>
                                         </div>
                                     </div>
                                 </div>
