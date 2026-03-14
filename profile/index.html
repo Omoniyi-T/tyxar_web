@@ -172,9 +172,14 @@
             .content-card {
                 padding: 16px;
                 border-radius: 0;
+                max-width: 100%;
             }
 
             .dashboard-main-content {
+                max-width: 100%;
+            }
+
+            .dashboard-content.container {
                 max-width: 100%;
             }
         }
@@ -224,9 +229,14 @@
             .content-card {
                 padding: 12px;
                 border-radius: 0;
+                max-width: 100%;
             }
 
             .dashboard-main-content {
+                max-width: 100%;
+            }
+
+            .dashboard-content.container {
                 max-width: 100%;
             }
         }
@@ -245,9 +255,9 @@
             justify-content: center;
         }
 
-        .dashboard-content {
+        .dashboard-content.container {
             max-width: 1200px;
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
             width: 100%;
         }
@@ -301,16 +311,21 @@
             width: 100%;
             min-width: 0;
             padding: 0;
-            margin: 0;
+            margin: 0 auto;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
         }
 
         .content-card {
             background: white;
             border-radius: 0;
-            padding: 24px 48px;
-            margin-bottom: 0;
+            padding: 24px;
+            margin: 0 auto;
             box-shadow: none;
             border-bottom: 1px solid #e2e8f0;
+            max-width: 1200px;
+            width: 100%;
         }
 
         .content-card h2 {
@@ -341,6 +356,8 @@
             width: 100%;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
         .content {
@@ -351,8 +368,9 @@
 
         .content-wrapper {
             width: 100%;
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
+            max-width: 100%;
         }
 
         @media (max-width: 1024px) {
@@ -363,6 +381,11 @@
             .content-card {
                 padding: 20px;
                 border-radius: 0;
+            }
+
+            .dashboard-content.container {
+                max-width: 100%;
+                padding: 0 20px;
             }
         }
 
