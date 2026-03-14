@@ -19,19 +19,15 @@
 
         /* Desktop topBanner styles */
         #topBanner {
-            position: absolute;
+            position: relative;
             height: 220px;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             border-radius: 0;
             overflow: visible;
-            margin: 0;
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
-            width: 100vw;
-            left: 50% !important;
-            transform: translateX(-50%);
-            top: 0;
             margin: 0 !important;
-            z-index: 50;
+            padding: 0 !important;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4);
+            width: 100%;
         }
 
         #topBanner > div:first-of-type {
@@ -255,22 +251,24 @@
 
         .dashboard-main {
             width: 100%;
-            padding: 0;
-            margin: 0;
-            padding-top: 220px;
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block;
         }
 
         .dashboard-content.container {
             max-width: none !important;
             padding: 0 !important;
-            margin: 0 !important;
+            margin: 0 auto !important;
             width: 100%;
+            display: block !important;
         }
 
         .content-wrapper {
             width: 100%;
             margin: 0;
             padding: 0;
+            display: block;
         }
 
         .hamburger-btn {
@@ -326,10 +324,15 @@
             background: white;
             border-radius: 0;
             padding: 24px 32px;
-            margin: 0;
+            margin: 0 !important;
             box-shadow: none;
             border-bottom: 1px solid #e2e8f0;
-            width: 100%;
+            width: calc(100vw - 0px);
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
             box-sizing: border-box;
         }
 
@@ -368,28 +371,37 @@
             width: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
-            overflow: hidden;
+            left: 0 !important;
+            right: 0 !important;
         }
 
         .profile-events {
             width: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
         }
 
         .content {
             width: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }
+
+        body #dashboard,
+        body .profile-events,
+        body .content {
+            position: relative;
         }
 
         .content-wrapper {
-            width: 100vw;
+            width: 100%;
             margin: 0;
             padding: 0;
             position: relative;
-            margin-left: -50vw;
-            left: 50%;
         }
 
         @media (max-width: 1024px) {
