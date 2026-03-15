@@ -6,16 +6,203 @@
     <link rel="shortcut icon" href="/tyxar_web/images/tyxar.ico" type="image/x-icon">
     <title>Profile - Tyxar Programming Language</title>
     <link rel="stylesheet" href="/tyxar_web/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/tyxar_web/profile/config.js"></script>
-    <!--<script src="/tyxar_web/profile/js.js"></script>-->
+    <script src="/tyxar_web/profile/js.js"></script>-->
     <style>
-        /* Place profile-specific styles here or import from styles.css */
+        body {
+            background: #f7fafc;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .flip-container {
+            perspective: 1200px;
+            width: 350px;
+            height: 420px;
+        }
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+            transform-style: preserve-3d;
+        }
+        .flip-container.flipped .flipper {
+            transform: rotateY(180deg);
+        }
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 24px rgba(30,58,138,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 28px 28px 28px;
+        }
+        .card .logo img {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 18px;
+        }
+        .card h2 {
+            margin: 0 0 18px 0;
+            text-align: center;
+            color: #1e3a8a;
+        }
+        .card input[type="email"], .card input[type="password"], .card input[type="text"] {
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .card button {
+            padding: 10px 0;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .card button:hover {
+            background: #1e3a8a;
+        }
+        .card .oauth-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #f1f5f9;
+            color: #222;
+            border: 1px solid #cbd5e0;
+            font-weight: 500;
+        }
+        .card .oauth-btn img {
+            width: 20px;
+            height: 20px;
+        }
+        .card .toggle-link {
+            color: #607DF0;
+            text-decoration: none;
+            font-size: 0.97rem;
+            margin-top: 10px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+        }
+        .card .status {
+            margin-top: 8px;
+            color: #e53e3e;
+            text-align: center;
+            min-height: 20px;
+        }
+        @media (max-width: 500px) {
+            .flip-container {
+                width: 98vw;
+                height: 98vw;
+                max-width: 370px;
+                max-height: 480px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="dialogue" class="dialogue">
-
+    <div class="flip-container" id="flipContainer">
+        <div class="flipper">
+            <!-- Login Card -->
+            <div class="card front">
+                <div class="logo">
+                    <img src="/tyxar_web/images/tyxar.png" alt="Tyxar Logo">
+                </div>
+                <h2>Login to Tyxar</h2>
+                <button class="oauth-btn" onclick="loginWithGoogle()">
+                    <img src="/tyxar_web/images/google-icon.png" alt="Google Icon">Login with Google
+                </button>
+                <button class="oauth-btn" onclick="loginWithGitHub()">
+                    <img src="/tyxar_web/images/github-icon.png" alt="GitHub Icon">Login with GitHub
+                </button>
+                <input id="email" type="email" placeholder="Email" autocomplete="username">
+                <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+                <button onclick="login()">Log in</button>
+                <span class="toggle-link" onclick="flipToSignup()">Don't have an account? Sign up</span>
+                <div class="status" id="authStatus"></div>
+            </div>
+            <!-- Signup Card -->
+            <div class="card back" style="transform: rotateY(180deg);">
+                <div class="logo">
+                    <img src="/tyxar_web/images/tyxar.png" alt="Tyxar Logo">
+                </div>
+                <h2>Create Account</h2>
+                <input id="signupName" type="text" placeholder="Full Name">
+                <input id="signupEmail" type="email" placeholder="Email" autocomplete="username">
+                <input id="signupPassword" type="password" placeholder="Password" autocomplete="new-password">
+                <button onclick="signup()">Sign up</button>
+                <span class="toggle-link" onclick="flipToLogin()">Already have an account? Log in</span>
+                <div class="status" id="signupStatus"></div>
+            </div>
+        </div>
     </div>
+    <script>
+    // Flip logic
+    function flipToSignup() {
+        document.getElementById('flipContainer').classList.add('flipped');
+    }
+    function flipToLogin() {
+        document.getElementById('flipContainer').classList.remove('flipped');
+    }
+    // Login logic
+    async function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) {
+            document.getElementById('authStatus').textContent = error.message;
+            return;
+        }
+        window.location.href = '/tyxar_web/profile/dashboard/';
+    }
+    async function signup() {
+        const name = document.getElementById('signupName').value;
+        const email = document.getElementById('signupEmail').value;
+        const password = document.getElementById('signupPassword').value;
+        const { data, error } = await supabaseClient.auth.signUp({ email, password }, { data: { name } });
+        if (error) {
+            document.getElementById('signupStatus').textContent = error.message;
+            return;
+        }
+        document.getElementById('signupStatus').textContent = 'Signup successful! Please check your email to verify.';
+        setTimeout(flipToLogin, 1200);
+    }
+    async function loginWithGoogle() {
+        const { error } = await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + '/tyxar_web/profile/dashboard/' } });
+        if (error) document.getElementById('authStatus').textContent = error.message;
+    }
+    async function loginWithGitHub() {
+        const { error } = await supabaseClient.auth.signInWithOAuth({ provider: 'github', options: { redirectTo: window.location.origin + '/tyxar_web/profile/dashboard/' } });
+        if (error) document.getElementById('authStatus').textContent = error.message;
+    }
+    // Auto-redirect if already logged in
+    document.addEventListener('DOMContentLoaded', async () => {
+        const { data } = await supabaseClient.auth.getUser();
+        if (data && data.user) {
+            window.location.href = '/tyxar_web/profile/dashboard/';
+        }
+    });
+    </script>
 </body>
 </html>
