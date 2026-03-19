@@ -1,10 +1,14 @@
 
 // --- Tyxar Auth Logic ---
 // Use supabaseClient from config.js
-
 document.addEventListener('DOMContentLoaded', function () {
-    // Only run auth logic if on profile page
+    // Redirect signed-in users away from login page
     if (document.getElementById('signin-dialog')) {
+        supabaseClient.auth.getUser().then(({ data }) => {
+            if (data && data.user) {
+                window.location.replace('/tyxar_web/profile/dashboard/index.html');
+            }
+        });
         const signinDialog = document.getElementById('signin-dialog');
         const signupDialog = document.getElementById('signup-dialog');
         document.getElementById('show-signup').onclick = function (e) {
@@ -26,11 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
             try {
                 const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
                 if (error) return showAuthError(error.message);
-                // Save user info to localStorage for dashboard
                 if (data && data.user) {
                     localStorage.setItem('tyxar_user', JSON.stringify(data.user));
                 }
-                window.location.href = '/tyxar_web/profile/dashboard/index.html';
+                window.location.replace('/tyxar_web/profile/dashboard/index.html');
             } catch (err) {
                 showAuthError('Sign in failed.');
             }
@@ -53,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data && data.user) {
                     localStorage.setItem('tyxar_user', JSON.stringify(data.user));
                 }
-                window.location.href = '/tyxar_web/profile/dashboard/index.html';
+                window.location.replace('/tyxar_web/profile/dashboard/index.html');
             } catch (err) {
                 showAuthError('Registration failed.');
             }
@@ -70,25 +73,17 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('github-signup').onclick = function (e) { e.preventDefault(); oauth('github'); };
     }
 
-    // Dashboard: Show user name if available
+    // Dashboard: Show user name if available, and redirect to login if not signed in
     if (document.body && window.location.pathname.includes('/profile/dashboard/index.html')) {
-        let user = null;
-        // Try to get from localStorage first
-        try {
-            user = JSON.parse(localStorage.getItem('tyxar_user'));
-        } catch { }
-        // If not found, get from supabase
-        if (!user) {
-            supabaseClient.auth.getUser().then(({ data }) => {
-                if (data && data.user) {
-                    user = data.user;
-                    localStorage.setItem('tyxar_user', JSON.stringify(user));
-                    showDashboardUser(user);
-                }
-            });
-        } else {
-            showDashboardUser(user);
-        }
+        supabaseClient.auth.getUser().then(({ data }) => {
+            if (!data || !data.user) {
+                window.location.replace('/tyxar_web/profile/index.html');
+            } else {
+                let user = data.user;
+                localStorage.setItem('tyxar_user', JSON.stringify(user));
+                showDashboardUser(user);
+            }
+        });
     }
 });
 

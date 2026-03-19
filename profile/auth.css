@@ -2,10 +2,10 @@
 .auth-logo {
     display: block;
     margin: 0 auto 0.7rem auto;
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
-        box-shadow: 0 1px 4px rgba(30, 40, 60, 0.08);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(30, 40, 60, 0.08);
     object-fit: contain;
     background: #f7f9fb;
 }
@@ -151,17 +151,14 @@ body {
 }
 
 .oauth-btn img {
-    width: 28px;
-    height: 28px;
+    width: 52px;
+    height: 52px;
     margin-right: 1em;
-        width: 32px;
-        height: 32px;
-        margin-right: 1em;
-        border-radius: 6px;
-        background: transparent;
-        box-shadow: none;
-        object-fit: contain;
-        border: none;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: none;
+    object-fit: contain;
+    border: none;
 }
 
 .oauth-btn:hover {
