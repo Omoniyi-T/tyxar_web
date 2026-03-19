@@ -1,3 +1,14 @@
+/* Tyxar Logo at top of dialog */
+.auth-logo {
+    display: block;
+    margin: 0 auto 0.7rem auto;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(30,40,60,0.10);
+    object-fit: contain;
+    background: #f7f9fb;
+}
 /* Tyxar Auth Page Styles */
 body {
     background: linear-gradient(135deg, #1a2233 0%, #2d3a4d 100%);
@@ -116,9 +127,14 @@ body {
     transition: background 0.18s, border 0.18s;
 }
 .oauth-btn img {
-    width: 22px;
-    height: 22px;
-    margin-right: 0.5em;
+    width: 28px;
+    height: 28px;
+    margin-right: 1em;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(30,40,60,0.10);
+    object-fit: contain;
+    border: 1px solid #e3e7ef;
 }
 .oauth-btn:hover {
     background: #eaf2ff;
