@@ -10,9 +10,30 @@
     <script src="/tyxar_web/profile/config.js"></script>
     <script src="/tyxar_web/profile/js.js"></script>
     <script src="/tyxar_web/script.js"></script>
-    <style>
-        /* Place dashboard-specific styles here or import from styles.css */
-    </style>
+    <script>
+        function loadHTML(url, elementId) {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(elementId).innerHTML = data;
+
+                        // --- CRITICAL STEP ---
+                        // Re-run initialization to catch the *new* links in the footer 
+                        // AND the sidebar links (since they use the global selector now)
+                        initializeContentLoader();
+
+                        // Initialize header search if header was loaded
+                        if (elementId === 'header' && window.initializeHeaderSearch) {
+                            setTimeout(() => window.initializeHeaderSearch(), 100);
+                        }
+                    })
+                    .catch(err => console.error(`Error loading ${url}:`, err));
+            }
+        document.addEventListener('DOMContentLoaded', (event) => {
+                // Load Header, Footer, and Sidebar
+                loadHTML('/tyxar_web/header.html', 'header');
+                loadHTML('/tyxar_web/footer.html', 'footer');});
+    </script>
 </head>
 
 <body>
