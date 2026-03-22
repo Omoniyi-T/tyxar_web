@@ -18,12 +18,9 @@ body {
     flex-direction: column;
     padding: 0;
     box-shadow: 2px 0 16px rgba(30, 40, 60, 0.08);
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000;
+    position: relative;
     transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+    z-index: 1000;
 }
 
 .sidebar-header {
@@ -63,7 +60,6 @@ body {
     font-size: 1.5em;
     cursor: pointer;
     border-radius: 8px;
-    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1100;
@@ -130,7 +126,6 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 8px;
-    display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 8px rgba(30, 40, 60, 0.08);
@@ -177,11 +172,11 @@ body {
     }
 
     .sidebar-close {
-        display: block;
+        display: flex;
     }
 
     .sidebar-toggle {
-        display: inline-block;
+        display: flex;
     }
 }
 
