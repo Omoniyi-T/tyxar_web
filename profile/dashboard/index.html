@@ -37,6 +37,54 @@
 </head>
 
 <body>
-    
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="/tyxar_web/images/tyxar.ico" alt="Admin avatar" class="sidebar-avatar">
+                <span class="sidebar-admin">Admin name</span>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">&times;</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link"><span class="sidebar-icon">🏠</span> Home</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-icon">📦</span> Products</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-icon">👤</span> Users</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-icon">🛒</span> Orders</a>
+                <a href="#" class="sidebar-link"><span class="sidebar-icon">⚙️</span> Account</a>
+            </nav>
+        </aside>
+
+        <!-- Hamburger for mobile -->
+        <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Main dashboard content -->
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h2>Welcome back, <span class="dashboard-user">Admin</span> <span class="dashboard-emoji">😎</span></h2>
+                <div class="dashboard-time" id="dashboardTime"></div>
+            </div>
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Products</div>
+                    <div class="dashboard-card-icon">📦</div>
+                    <div class="dashboard-card-value" id="productsCount">5</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Users</div>
+                    <div class="dashboard-card-icon">👤</div>
+                    <div class="dashboard-card-value" id="usersCount">5</div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Orders</div>
+                    <div class="dashboard-card-icon">🛒</div>
+                    <div class="dashboard-card-value" id="ordersCount">5</div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
