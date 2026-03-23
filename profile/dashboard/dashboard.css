@@ -156,16 +156,18 @@ body {
 @media (max-width: 900px) {
     .dashboard-main {
         margin-left: 0;
+        position: relative;
     }
 
     .sidebar {
         transform: translateX(-100%);
-        position: fixed;
+        position: absolute;
         left: 0;
         top: 56px; /* anchor below header */
         bottom: 0;
         width: 220px;
         height: calc(100vh - 56px);
+        z-index: 1000;
     }
 
     .sidebar.open {
