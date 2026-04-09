@@ -19,128 +19,333 @@
         <div id="content" class="content">
             <div class="content-wrapper">
                 
-                <h1>Command Line Interface (CLI)</h1>
-
-                <section id="commands">
-                    <h2>All CLI Commands</h2>
-                    <p>Tyxar CLI commands are designed to be easily memorable in order to be used
-                        efficiently by both beginners and developers alike.
+                <h1>Command Line Interface (CLI) Documentation</h1>
+                
+                <section id="overview">
+                    <h2>Overview</h2>
+                    <p>
+                        Tyxar represents a paradigm shift in programming language design—<strong>an English-first programming language</strong>
+                        that fundamentally reimagines how developers interact with code.
+                        By leveraging natural language constructs and eliminating cryptic symbolic syntax,
+                        Tyxar enables you to write code that reads almost exactly like you speak.
                     </p>
-                    <li>
-                        <a href="#help">Get CLI help</a> :
-                        <code>tyxar help</code>
-                    </li>
-                    <li>
-                        <a href="#version">Verify Tyxar Version</a> :
-                        <code>tyxar version</code>
-                    </li>
-                    <li>
-                        <a href="#run">Run code without building</a> :
-                        <code>tyxar run file.txr</code>
-                    </li>
-                    <!--
-                    <li>
-                        <a href="#compile">Compile code to binary</a> :
-                        <code>tyxar build file.txr</code>
-                    </li>
-                    <li>
-                        <a href="#transpile">Transpile code to a high level language.</a> :
-                        <code>tyxar convert file.txr --target:{target-language}</code>
-                    </li>
-                    
-                    <li>
-                        <a href="#install">Install external files</a> :
-                        <code>tyxar install...</code>
-                    </li>
-                    
-                    <li>
-                        <a href="#scan">Debug code eficiently</a> :
-                        <code>tyxar scan file.txr </code>
-                    </li>
-                    <li>
-                        <a href="#explain">Explain step-by-step the flow and meaning of code.</a> :
-                        <code>tyxar explain file.txr</code>
-                    </li>
-                    -->
+                    <p>
+                        The Tyxar Command Line Interface (CLI) provides a comprehensive suite of tools
+                        for compiling, executing, transpiling, and debugging your applications.
+                        Each command has been meticulously designed for discoverability and intuitive usage,
+                        whether you're a first-time programmer or an experienced software engineer.
+                    </p>
                 </section>
-
-
-
+                
+                <section id="file-extension">
+                    <h2>File Extension and Basic Syntax</h2>
+                    <p>
+                        All Tyxar source files utilize the distinctive <strong><code>.txr</code></strong> file extension
+                        (e.g., <code>myprogram.txr</code>, <code>data_processor.txr</code>).
+                        This standardized extension facilitates integration with development tools, version control systems,
+                        and build automation frameworks across your organization.
+                    </p>
+                </section>
+                
+                <section id="usage">
+                    <h2>General Usage Pattern</h2>
+                    <p>
+                        The Tyxar CLI follows a consistent, predictable command structure:
+                    </p>
+                    <pre><code>tyxar &lt;command&gt; &lt;file&gt; [options]</code></pre>
+                    <ul>
+                        <li><strong>&lt;command&gt;</strong> – The operation to perform (run, build, convert, etc.)</li>
+                        <li><strong>&lt;file&gt;</strong> – Your Tyxar source file with .txr extension</li>
+                        <li><strong>[options]</strong> – Optional flags to customize command behavior</li>
+                    </ul>
+                </section>
+                
+                <section id="commands">
+                    <h2>Complete Command Reference</h2>
+                    <p>
+                        The Tyxar CLI provides a comprehensive set of commands designed for maximum efficiency
+                        and intuitive discoverability. Each command is available in both a full and abbreviated form
+                        to accommodate your workflow preferences:
+                    </p>
+                    <ul>
+                        <li><a href="#help"><strong>Help & Information</strong></a> – <code>tyxar --help</code> (or <code>-h</code>)</li>
+                        <li><a href="#version"><strong>Version Management</strong></a> – <code>tyxar --version</code> (or <code>-v</code>)</li>
+                        <li><a href="#run"><strong>Program Execution</strong></a> – <code>tyxar run</code> (or <code>r</code>)</li>
+                        <li><a href="#convert"><strong>Code Transpilation</strong></a> – <code>tyxar convert</code> (or <code>c</code>)</li>
+                        <li><a href="#build"><strong>Executable Compilation</strong></a> – <code>tyxar build</code> (or <code>b</code>)</li>
+                        <li><a href="#install"><strong>Package Installation</strong></a> – <code>tyxar install</code> (or <code>i</code>)</li>
+                        <li><a href="#scan"><strong>Static Code Analysis</strong></a> – <code>tyxar scan</code> (or <code>s</code>)</li>
+                        <li><a href="#explain"><strong>Code Explanation</strong></a> – <code>tyxar explain</code> (or <code>e</code>)</li>
+                    </ul>
+                </section>
+                
                 <section id="help">
-                    <h2>Inbuilt CLI Helper</h2>
-                    <p>.....
-<pre><code>tyxar help 
-or
-tyxar h</code></pre>
-                        ...</p>
+                    <h2>Getting Help: --help / -h</h2>
+                    <p>
+                        The integrated CLI help system provides immediate access to command reference information,
+                        usage examples, and available options without requiring external documentation.
+                        This feature is invaluable when you need quick clarification on command syntax or available flags.
+                    </p>
+                    <p>
+                        <strong>Usage:</strong>
+                    </p>
+                    <pre><code>tyxar --help
+tyxar -h</code></pre>
+                    <p>
+                        The help command displays comprehensive information about all available Tyxar commands,
+                        their purpose, available options, and practical usage examples.
+                    </p>
                 </section>
                 
-
-
                 <section id="version">
-                    <h2>Verifying Tyxar Version</h2>
-                    <p>.....
-<pre><code>tyxar version
-or
-tyxar v
-</code></pre>
-                        ...</p>
+                    <h2>Version Information: --version / -v</h2>
+                    <p>
+                        Verify the currently installed version of the Tyxar programming language and CLI toolchain.
+                        Version information is crucial for <strong>compatibility verification</strong>,
+                        <strong>update planning</strong>, and <strong>troubleshooting</strong> compatibility issues
+                        between your development environment and project requirements.
+                    </p>
+                    <p>
+                        <strong>Usage:</strong>
+                    </p>
+                    <pre><code>tyxar --version
+tyxar -v</code></pre>
+                    <p>
+                        Returns version information in a standardized format, including major, minor, and patch version numbers.
+                    </p>
                 </section>
                 
-
-
                 <section id="run">
-                    <h2>Running Programs</h2>
-                    <p>Running Tyxar programs...
-<pre><code>tyxar run(or r) file.txr
-tyxar r(or run) file.txr --ast(or -a)
-tyxar r(or run) file.txr --jit(or -j)
-</code></pre> 
-                        ...to run the code without building</p>
+                    <h2>Program Execution: run / r</h2>
+                    <p>
+                        Execute your Tyxar programs immediately with the <strong><code>run</code></strong> command.
+                        This command interprets and executes your .txr files without requiring a compilation step,
+                        enabling rapid development iteration and immediate feedback on code execution.
+                    </p>
+                    <p>
+                        <strong>Basic Usage:</strong>
+                    </p>
+                    <pre><code>tyxar run myprogram.txr
+tyxar r myprogram.txr</code></pre>
+                    <p>
+                        <strong>Advanced Execution Modes:</strong>
+                    </p>
+                    <pre><code>tyxar run myprogram.txr --jit
+tyxar run myprogram.txr -j
+
+tyxar run myprogram.txr --ast
+tyxar run myprogram.txr -a</code></pre>
+                    <p>
+                        <strong>Options:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            <strong><code>--jit</code> (or <code>-j</code>)</strong> –
+                            Enable Just-In-Time compilation for significantly faster execution performance,
+                            ideal for performance-critical applications.
+                        </li>
+                        <li>
+                            <strong><code>--ast</code> (or <code>-a</code>)</strong> –
+                            Run in Abstract Syntax Tree mode for detailed program analysis and debugging,
+                            useful when investigating program behavior or compiler interactions.
+                        </li>
+                    </ul>
                 </section>
-
-<!--
-
-                <section id="compile">
-                    <h2>Program Compilation</h2>
-                    <p>Tyxar is compiled to ..... 
-<pre><code>tyxar build(or b) file.txr --target(or - t) {target-binary}</code></pre>
-                    ...</p>
-                </section>
-
-
-
-                <section id="transpile">
-                    <h2>Program Transpilation</h2>
-                    <p>Transpile Tyxar code to high level language... <code>tyxar convert file.txr -target:py</code>
-                        ...</p>
-                </section>    
                 
-
-
-                <section id="install">
-                    <h2>Installing external programs</h2>
-                    <p> ... <code>tyxar install... </code>
-                        ...</p>
+                <section id="convert">
+                    <h2>Code Transpilation: convert / c</h2>
+                    <p>
+                        Transpile your Tyxar source code into alternative high-level programming languages.
+                        This capability enables <strong>seamless integration</strong> with existing ecosystems,
+                        <strong>cross-platform compatibility</strong>, and <strong>interoperability</strong>
+                        with projects written in other languages.
+                    </p>
+                    <p>
+                        <strong>General Usage:</strong>
+                    </p>
+                    <pre><code>tyxar convert myprogram.txr --target py
+tyxar convert myprogram.txr -t py</code></pre>
+                    <p>
+                        <strong>Supported Target Languages:</strong>
+                    </p>
+                    <ul>
+                        <li><strong><code>py</code></strong> – Python</li>
+                        <li><strong><code>js</code></strong> – JavaScript</li>
+                        <li><strong><code>c</code></strong> – C</li>
+                        <li><strong><code>ast</code></strong> – Abstract Syntax Tree dump</li>
+                    </ul>
+                    <p>
+                        <strong>Examples:</strong>
+                    </p>
+                    <pre><code>tyxar convert myprogram.txr --target py
+tyxar convert myprogram.txr --target js
+tyxar convert myprogram.txr --target c
+tyxar convert myprogram.txr --target ast</code></pre>
                 </section>
-
-
-
+                
+                <section id="build">
+                    <h2>Executable Compilation: build / b</h2>
+                    <p>
+                        Compile your Tyxar source code into optimized, standalone executable files
+                        suitable for distribution and deployment in production environments.
+                        This command generates <strong>platform-specific binaries</strong> or <strong>cross-platform</strong> artifacts
+                        depending on your target platform selection.
+                    </p>
+                    <p>
+                        <strong>General Usage:</strong>
+                    </p>
+                    <pre><code>tyxar build myprogram.txr --target exe
+tyxar build myprogram.txr -t exe</code></pre>
+                    <p>
+                        <strong>Supported Build Targets:</strong>
+                    </p>
+                    <ul>
+                        <li><strong><code>exe</code></strong> – Windows executable</li>
+                        <li><strong><code>wasm</code></strong> – WebAssembly for web browsers</li>
+                        <li><strong><code>apk</code></strong> – Android application package</li>
+                    </ul>
+                    <p>
+                        <strong>Examples:</strong>
+                    </p>
+                    <pre><code>tyxar build myprogram.txr --target exe
+tyxar build myprogram.txr --target wasm
+tyxar build myprogram.txr --target apk</code></pre>
+                </section>
+                
+                <section id="install">
+                    <h2>Package Installation: install / i</h2>
+                    <p>
+                        Install reusable code modules and extensions from online Tyxar repositories.
+                        Tyxar Nodes are pre-built, tested packages that provide <strong>extended functionality</strong>,
+                        <strong>third-party integrations</strong>, and <strong>community-contributed libraries</strong>.
+                    </p>
+                    <p>
+                        <strong>General Usage:</strong>
+                    </p>
+                    <pre><code>tyxar install package_name
+tyxar i package_name</code></pre>
+                    <p>
+                        <strong>Package Management Options:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            <strong><code>--list</code> (or <code>-l</code>)</strong> –
+                            Display all currently installed nodes and their versions
+                        </li>
+                        <li>
+                            <strong><code>--remove</code> (or <code>-r</code>)</strong> –
+                            Uninstall a previously installed package from your environment
+                        </li>
+                    </ul>
+                    <p>
+                        <strong>Example:</strong>
+                    </p>
+                    <pre><code>tyxar install mypackage</code></pre>
+                </section>
+                
                 <section id="scan">
-                    <h2>Program Debugging</h2>
-                    <p>Debug ... <code>tyxar scan file.txr </code>
-                        ...</p>
+                    <h2>Static Code Analysis: scan / s</h2>
+                    <p>
+                        Perform comprehensive static analysis on your Tyxar source code
+                        without executing the program. This powerful feature enables <strong>early error detection</strong>,
+                        <strong>code quality assessment</strong>, and <strong>potential issue identification</strong>
+                        before runtime execution.
+                    </p>
+                    <p>
+                        <strong>Basic Usage:</strong>
+                    </p>
+                    <pre><code>tyxar scan myprogram.txr
+tyxar s myprogram.txr</code></pre>
+                    <p>
+                        <strong>Verbose Analysis:</strong>
+                    </p>
+                    <pre><code>tyxar scan myprogram.txr --verbose
+tyxar scan myprogram.txr -v</code></pre>
+                    <p>
+                        <strong>Options:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            <strong><code>--verbose</code> (or <code>-v</code>)</strong> –
+                            Generate detailed, granular feedback about identified issues,
+                            including severity levels, line numbers, and suggested corrections.
+                        </li>
+                    </ul>
                 </section>
                 
                 <section id="explain">
-                    <h2>Program Explanation</h2>
-                    <p>Explanation.... <code>tyxar explain file.txr </code>
-                        ...</p>
+                    <h2>Code Explanation: explain / e</h2>
+                    <p>
+                        Generate comprehensive, human-readable explanations of what your Tyxar code does.
+                        This feature is invaluable for <strong>code comprehension</strong>, <strong>knowledge transfer</strong>,
+                        and <strong>educational purposes</strong>. The Tyxar explain command provides insights
+                        into program logic and execution flow without requiring manual code review.
+                    </p>
+                    <p>
+                        <strong>Basic Usage:</strong>
+                    </p>
+                    <pre><code>tyxar explain myprogram.txr
+tyxar e myprogram.txr</code></pre>
+                    <p>
+                        <strong>Step-by-Step Analysis:</strong>
+                    </p>
+                    <pre><code>tyxar explain myprogram.txr --steps
+tyxar explain myprogram.txr -s</code></pre>
+                    <p>
+                        <strong>Options:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            <strong><code>--steps</code> (or <code>-s</code>)</strong> –
+                            Provide step-by-step breakdown of code execution,
+                            showing variable assignments, conditional branches, and control flow in sequence.
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="getting-help">
+                    <h2>Additional Resources</h2>
+                    <p>
+                        For comprehensive documentation and additional information beyond this CLI reference:
+                    </p>
+                    <ul>
+                        <li>
+                            Visit the <a href="https://tyxar-lang.github.io/tyxar_web/docs/"><strong>complete Tyxar documentation portal</strong></a>
+                        </li>
+                        <li>
+                            Use the <strong><code>tyxar --help</code></strong> command for quick reference
+                        </li>
+                        <li>
+                            Explore the <a href="/tyxar_web/docs/syntax"><strong>Language Syntax</strong></a> documentation for detailed language features
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="tips">
+                    <h2>Pro Tips for CLI Usage</h2>
+                    <ul>
+                        <li>
+                            <strong>Use abbreviated commands</strong> – All commands have short forms
+                            (<code>-r</code> instead of <code>run</code>, <code>-b</code> instead of <code>build</code>)
+                            for faster typing during development.
+                        </li>
+                        <li>
+                            <strong>Leverage the scan command</strong> – Run <code>tyxar scan</code> frequently
+                            to catch errors before they become runtime issues.
+                        </li>
+                        <li>
+                            <strong>Use explain for learning</strong> – The <code>explain</code> command is an excellent
+                            tool for understanding program logic and team knowledge transfer.
+                        </li>
+                        <li>
+                            <strong>Target multiple platforms</strong> – Use the <code>build</code> command
+                            with different targets to create platform-specific distributions.
+                        </li>
+                    </ul>
                 </section>
 
             </div>
         </div>
-    -->
 
 
         <!-- Scripts -->
